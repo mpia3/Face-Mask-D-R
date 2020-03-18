@@ -1,8 +1,8 @@
 import jade.core.Agent;
 
 public class MioAgenteProva extends Agent{
-	protected void setup(){		//behaviors = azione è cond di terminazione
-		System.out.println("L’agente "+ getAID().getName()+" è stato lanciato");
+	protected void setup(){		//behaviors = azione Ã¨ cond di terminazione
+		System.out.println("Lâ€™agente "+ getAID().getName()+" Ã¨ stato lanciato");
 		Object[] args=getArguments();
 		if (args != null) {
 			System.out.println("con" + args.length + "argomenti");
@@ -10,6 +10,6 @@ public class MioAgenteProva extends Agent{
 		doDelete();	//girera finche non lo uccido
 	}
 	protected void takeDown() {
-		System.out.println("L’agente" + getAID().getName() + "è stato eliminato");
+		System.out.println("Lâ€™agente" + getAID().getName() + "Ã¨ stato eliminato");
 	}
 }
