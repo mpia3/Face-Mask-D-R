@@ -24,14 +24,14 @@ detector = dlib.get_frontal_face_detector()
 predictor = dlib.shape_predictor(PATH_MODEL)
 
 cap = cv2.VideoCapture(0)
-
+frame_number = 1
 while True:
     # Capture frame-by-frame
     ret, frame = cap.read()
 
     # Our operations on the frame come here
     rects = detector(frame, 1)
-    print("Numero di volti rilevati: {}".format(len(rects)))
+    print("Frame #{}, number of faces detected: {}".format(frame_number, len(rects)) + '')
 
     for (i, rect) in enumerate(rects):
         shape = predictor(frame, rect)
@@ -44,6 +44,7 @@ while True:
 
     # Display the resulting frame
     cv2.imshow('frame', frame)
+    frame_number += 1
     if cv2.waitKey(1) & 0xFF == ord('q'):
         break
 
