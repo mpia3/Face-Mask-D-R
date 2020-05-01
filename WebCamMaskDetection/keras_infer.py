@@ -131,7 +131,6 @@ def run_on_video(video_path, output_video_name, conf_thresh):
                                                                    write_frame_stamp - inference_stamp))
 
     # writer.release()
-
     # When everything done, release the capture
     cap.release()
     cv2.destroyAllWindows()
