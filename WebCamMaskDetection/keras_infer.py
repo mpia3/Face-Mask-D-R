@@ -105,6 +105,7 @@ def run_on_video(video_path, output_video_name, conf_thresh):
         return
     status = True
     idx = 0
+    pause = False
     while status:
         start_stamp = time.time()
         status, img_raw = cap.read()
@@ -119,8 +120,14 @@ def run_on_video(video_path, output_video_name, conf_thresh):
                       show_result=False)
             cv2.imshow('image', img_raw[:, :, ::-1])
             # cv2.waitKey(1)
-            if cv2.waitKey(1) & 0xFF == ord('q'):
+            if cv2.waitKey(20) & 0xFF == ord('p'):
+                pause = True
+                while pause:
+                    if cv2.waitKey(1) & 0xFF == ord('p'):
+                        pause = False
+            elif cv2.waitKey(20) & 0xFF == ord('q'):
                 break
+
             inference_stamp = time.time()
             # writer.write(img_raw)
             write_frame_stamp = time.time()
