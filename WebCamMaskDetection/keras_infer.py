@@ -110,7 +110,7 @@ def run_on_video(video_path, output_video_name, conf_thresh):
         status, img_raw = cap.read()
         img_raw = cv2.cvtColor(img_raw, cv2.COLOR_BGR2RGB)
         read_frame_stamp = time.time()
-        if (status):
+        if status:
             inference(img_raw,
                       conf_thresh,
                       iou_thresh=0.5,
@@ -118,7 +118,9 @@ def run_on_video(video_path, output_video_name, conf_thresh):
                       draw_result=True,
                       show_result=False)
             cv2.imshow('image', img_raw[:, :, ::-1])
-            cv2.waitKey(1)
+            # cv2.waitKey(1)
+            if cv2.waitKey(1) & 0xFF == ord('q'):
+                break
             inference_stamp = time.time()
             # writer.write(img_raw)
             write_frame_stamp = time.time()
@@ -127,7 +129,12 @@ def run_on_video(video_path, output_video_name, conf_thresh):
             print("read_frame:%f, infer time:%f, write time:%f" % (read_frame_stamp - start_stamp,
                                                                    inference_stamp - read_frame_stamp,
                                                                    write_frame_stamp - inference_stamp))
+
     # writer.release()
+
+    # When everything done, release the capture
+    cap.release()
+    cv2.destroyAllWindows()
 
 
 if __name__ == "__main__":
