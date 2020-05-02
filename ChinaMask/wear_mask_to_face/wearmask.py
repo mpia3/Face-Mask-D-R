@@ -30,7 +30,7 @@ def rect_to_bbox(rect):
 
 def face_alignment(faces):
     # 预测关键点
-    predictor = dlib.shape_predictor("wear_mask_to_face/shape_predictor_68_face_landmarks.dat")
+    predictor = dlib.shape_predictor("./shape_predictor_68_face_landmarks.dat")
     faces_aligned = []
     for face in faces:
         rec = dlib.rectangle(0, 0, face.shape[0], face.shape[1])
@@ -54,7 +54,7 @@ def face_alignment(faces):
     return faces_aligned
 
 
-def cli(pic_path='/Users/wuhao/lab/wear-a-mask/spider/new_lfw/Aaron_Tippin/Aaron_Tippin_0001.jpg', save_pic_path=''):
+def cli(pic_path='', save_pic_path=''):
     parser = argparse.ArgumentParser(description='Wear a face mask in the given picture.')
     # parser.add_argument('pic_path', default='/Users/wuhao/lab/wear-a-mask/spider/new_lfw/Aaron_Tippin/Aaron_Tippin_0001.jpg',help='Picture path.')
     # parser.add_argument('--show', action='store_true', help='Whether show picture with mask or not.')
@@ -214,8 +214,9 @@ class FaceMasker:
 
 
 if __name__ == '__main__':
-    dataset_path = '/Users/wuhao/Desktop/anyaping'
-    save_dataset_path = '/Users/wuhao/Desktop/anyaping'
+    ActorName = 'Angelina Jolie'
+    dataset_path = './Actors/' + ActorName
+    save_dataset_path = 'Actors/' + ActorName+'Mask'
     for root, dirs, files in os.walk(dataset_path, topdown=False):
         for name in files:
             new_root = root.replace(dataset_path, save_dataset_path)
