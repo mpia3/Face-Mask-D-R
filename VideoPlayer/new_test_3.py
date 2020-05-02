@@ -1,4 +1,3 @@
-import sys
 from time import sleep
 
 import cv2
@@ -18,7 +17,7 @@ controls = np.zeros((50, 750), np.uint8)
 cv2.putText(controls, "W/w: Play, S/s: Stay, A/a: Prev, D/d: Next, E/e: Fast, Q/q: Slow, Esc: Exit", (40, 20),
             cv2.FONT_HERSHEY_SIMPLEX, 0.5, 255)
 
-video = sys.argv[1] # "H:\SysAg\WebCamMaskDetection\VideoMask4Test\Mask01.mp4"  #
+video = "H:\SysAg\WebCamMaskDetection\VideoMask4Test\Mask01.mp4"  # sys.argv[1]
 cap = cv2.VideoCapture(video)
 
 tots = cap.get(cv2.CAP_PROP_FRAME_COUNT)
