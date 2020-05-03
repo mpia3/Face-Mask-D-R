@@ -214,15 +214,19 @@ class FaceMasker:
 
 
 if __name__ == '__main__':
-    ActorName = 'Angelina Jolie'
-    dataset_path = './Actors/' + ActorName
-    save_dataset_path = 'Actors/' + ActorName+'Mask'
-    for root, dirs, files in os.walk(dataset_path, topdown=False):
-        for name in files:
-            new_root = root.replace(dataset_path, save_dataset_path)
-            # if not os.path.exists(new_root):
-            #     os.makedirs(new_root)
-            # deal
-            imgpath = os.path.join(root, name)
-            save_imgpath = os.path.join(new_root, name)
-            cli(imgpath, save_imgpath)
+    attore = 1
+    ActorName = ['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles']
+    dataset_path = './Actors/' + ActorName[attore]
+    save_dataset_path = './ActorsWMask/' + ActorName[attore] + '-Mask'
+    try:
+        for root, dirs, files in os.walk(dataset_path, topdown=False):
+            for name in files:
+                new_root = root.replace(dataset_path, save_dataset_path)
+                # if not os.path.exists(new_root):
+                #     os.makedirs(new_root)
+                # deal
+                imgpath = os.path.join(root, name)
+                save_imgpath = os.path.join(new_root, name)
+                cli(imgpath, save_imgpath)
+    except:
+        print("Excepion")
