@@ -12,3 +12,4 @@ python keras_infer.py --img-mode 0 --video-path 0
 
 # python keras_infer.py --img-mode 0 --video-path H:\SysAg\WebCamMaskDetection\VideoMask4Test\Mask01.mp4
 # python keras_infer.py  --img-path H:\SysAg\WebCamMaskDetection\Images4Test\ScarlettMask.jpg
+# python keras_infer.py  --img-path H:\SysAg\ChinaMask\wear_mask_to_face\ActorsWMask\Angelina Jolie-Mask\1.jpg

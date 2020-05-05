@@ -133,9 +133,9 @@ class FaceMasker:
             for faces in faces_aligned:
                 face_num = face_num + 1
                 faces = cv2.cvtColor(faces, cv2.COLOR_RGBA2BGR)
-                size = (int(128), int(128))
-                faces_after_resize = cv2.resize(faces, size, interpolation=cv2.INTER_AREA)
-                cv2.imwrite(self.save_path, faces_after_resize)
+                # size = (int(128), int(128))
+                # faces_after_resize = cv2.resize(faces, size, interpolation=cv2.INTER_AREA)
+                cv2.imwrite(self.save_path, faces)
             # if self.show:
             #     self._face_img.show()
             # save
@@ -214,19 +214,23 @@ class FaceMasker:
 
 
 if __name__ == '__main__':
-    attore = 1
+    attore = 4
     ActorName = ['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles']
     dataset_path = './Actors/' + ActorName[attore]
     save_dataset_path = './ActorsWMask/' + ActorName[attore] + '-Mask'
-    try:
-        for root, dirs, files in os.walk(dataset_path, topdown=False):
-            for name in files:
-                new_root = root.replace(dataset_path, save_dataset_path)
-                # if not os.path.exists(new_root):
-                #     os.makedirs(new_root)
-                # deal
-                imgpath = os.path.join(root, name)
-                save_imgpath = os.path.join(new_root, name)
+    cont = 0
+
+    for root, dirs, files in os.walk(dataset_path, topdown=False):
+        for name in files:
+            new_root = root.replace(dataset_path, save_dataset_path)
+            # if not os.path.exists(new_root):
+            #     os.makedirs(new_root)
+            # deal
+            imgpath = os.path.join(root, name)
+            save_imgpath = os.path.join(new_root, name)
+            print("cont: ", cont)
+            cont += 1
+            try:
                 cli(imgpath, save_imgpath)
-    except:
-        print("Excepion")
+            except:
+                print("Excepion")
