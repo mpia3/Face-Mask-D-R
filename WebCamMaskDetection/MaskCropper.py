@@ -1,11 +1,9 @@
 import cv2
 import numpy as np
 from matplotlib import pyplot
-import matplotlib
 import os
 from PIL import Image
-import time
-import psutil
+
 
 def printImage(image):
     pyplot.imshow(image)
@@ -54,8 +52,8 @@ def hsv2rgb(hsvColor):
     return rgb[0], rgb[1], rgb[2]
 
 
-def cropEyeLineFromMasked(image):
-    frame = pyplot.imread(image)
+def cropEyeLineFromMasked(frame):
+    # frame = pyplot.imread(image)
     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     low_blue_hsv = '#147B7A'  # DA FARE IL TUNING
@@ -113,10 +111,10 @@ def cropMaskedActors(Path, croppedPath):
             print("not Saved: ", image)
 
 
-Path = "./SysAgWmask"
-croppedPath = "./OUT"
-
-cropMaskedActors(Path, croppedPath)
+# Path = "./SysAgWmask"
+# croppedPath = "./OUT"
+#
+# cropMaskedActors(Path, croppedPath)
 
 # def cropEyeLineFromMasked():
 #     xx = 'H:\SysAg\WebCamMaskDetection\Images4Test\AngelinaMask.jpg'
