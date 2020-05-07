@@ -5,7 +5,6 @@ import cv2
 import numpy as np
 from PIL import Image
 import random
-from WebCamMaskDetection.MaskCropper import cropEyeLineFromMasked
 from keras.preprocessing.image import ImageDataGenerator
 from keras.applications.vgg16 import preprocess_input
 from keras.applications import VGG16

@@ -5,7 +5,6 @@ import cv2
 KNOWN = "D:/SysAg/FaceRecognition/Known"
 UNKNOWN = "D:/SysAg/FaceRecognition/UnKnown"
 
-
 TOLERANCE = 0.6
 FRAME_THICKNESS = 3
 FONT_THICKNESS = 2
