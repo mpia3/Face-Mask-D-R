@@ -110,7 +110,8 @@ subtracts the color of the face mask and identifies the cut
 <br>
 <br>
 INSERIRE IMMAGINI SOTTRAZIONE COLORE E EYE LINE
-![](doc/faces/MaskSubColor.png)
+
+![](doc/faces/MaskSubColor.png)<br>
 ![](doc/faces/EyeLine.jpg)
 
 
@@ -135,34 +136,35 @@ image provided between one of the 5 masked actors used.
 ![](doc/faces/CleanDetected/3OK.png)<br>
 ![](doc/faces/WMask/2Mask.jpg)
 ![](doc/faces/WMaskDetected/2MaskOK.png)
-
+<br>
 ___
 **Angelina Jolie**<br>
 ![](doc/faces/Clean/8.jpg)
 ![](doc/faces/CleanDetected/8OK.png)<br>
 ![](doc/faces/WMask/3Mask.jpg)
 ![](doc/faces/WMaskDetected/3MaskOK.png)
-
+<br>
 ___
 **Antony Hopkins**<br>
 ![](doc/faces/Clean/49.jpg)
 ![](doc/faces/CleanDetected/49OK.png)<br>
 ![](doc/faces/WMask/1Mask.jpg)
 ![](doc/faces/WMaskDetected/1MaskOK.png)
-
+<br>
 ___
 **Ben Affleck**<br>
 ![](doc/faces/Clean/14.jpg)
 ![](doc/faces/CleanDetected/14OK.png)<br>
 ![](doc/faces/WMask/18Mask.jpg)
 ![](doc/faces/WMaskDetected/18MaskOK.png)
-
+<br>
 ___
 **Beyonce**<br>
 ![](doc/faces/Clean/67.jpg)
 ![](doc/faces/CleanDetected/67OK.png)<br>
 ![](doc/faces/WMask/21Mask.jpg)
 ![](doc/faces/WMaskDetected/21MaskOK.png)
+<br>
 </li>
 
 
