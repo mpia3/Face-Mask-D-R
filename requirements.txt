@@ -1,0 +1,10 @@
+opencv-python~=4.2.0.34
+dlib~=19.19.0
+numpy~=1.18.2
+Pillow~=7.1.1
+Keras~=2.3.1
+utils~=1.0.1
+matplotlib~=3.2.1
+seaborn~=0.10.1
+scikit-learn~=0.22.2.post1
+mtcnn~=0.1.0
