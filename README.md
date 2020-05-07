@@ -95,6 +95,7 @@ The script is able to start via command line on images, videos and webcams
 <br>
 <br>
 INSERIRE GIF
+![](doc/faces/Test_face_actors_recognition.png)
 
 #### 2) Mask Cropper <br>
 ___
