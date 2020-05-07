@@ -17,13 +17,13 @@
 <ul>
 
 
-## What is XXX
+## What is fmdr
 
-**XXX** is an application developed for a System at Agents exam 
-at **Univeristy Aldo Moro** of Bari Italy. <br>
-its goal is to detect face mask on images of faces and eventually recognize
-['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles']
-with or without mask
+**FMD&R** is an application developed for an "Agent Systems" exam 
+at **University Aldo Moro** of Bari Italy. <br>
+its goal is to detect face mask on images of faces and eventually recognize: <br>
+'Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles'
+with or without face mask protections
 
 ### Extra Functionalities
 <ul>
@@ -85,7 +85,6 @@ mtcnn~=0.1.0
 ## How it works
 Project Presentation inside "/doc/Presentazione FMDR.pptx" <br>
 ___
-
 #### 1) Mask Detection <br>
 ___
 This project trains a CNN to detect the presence of a face mask in a face image.
@@ -113,9 +112,9 @@ the actors, and make a prediction on which of the 5 actors it can be.
 <br>
 <br>
 INSERIRE IMMAGINI
+
 #### 3) Masked Face Recognition <br>
 ___
-
 This project based on the pre-trained classifier VGG16 is able to fine-tune 
 the images of the dataset containing only the eye line returned by 
 MaskCropper.py. He is therefore able to recognize the identity of the 
