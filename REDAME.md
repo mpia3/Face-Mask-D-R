@@ -96,8 +96,8 @@ The script is able to start via command line on images, videos and webcams
 <br>
 INSERIRE GIF
 
-![](doc/faces/GroupNoMask.PNG)
-![](doc/faces/StreetMaskOK.PNG)
+![](doc/faces/GroupNoMask.png)
+![](doc/faces/StreetMaskOK.png)
 ![](doc/faces/MuseoOK.PNG)
 
 
