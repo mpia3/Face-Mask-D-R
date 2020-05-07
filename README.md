@@ -130,17 +130,17 @@ image provided between one of the 5 masked actors used.
 ## Evaluation and Results
 
 #### VGG16 results on Actor clean faces Recognition
-![](doc/Results/Test_face_actors_recognition.png)
+![](doc/results/Test_face_actors_recognition.png)
 <br>
 
-![](doc/Results/Train_Val_face_actors_recognition.png)
+![](doc/results/Train_Val_face_actors_recognition.png)
 <br>
 
 #### VGG16 results on Actor masked faces (EyeLinesCrop) Recognition
-![](doc/Results/Test_actors_recognition_from_eyes.jpeg)
+![](doc/results/Test_actors_recognition_from_eyes.jpeg)
 <br>
 
-![](doc/Results/Train_Val_actors_recognition_from_eyes.jpeg)
+![](doc/results/Train_Val_actors_recognition_from_eyes.jpeg)
 <br>
 
 </li>
