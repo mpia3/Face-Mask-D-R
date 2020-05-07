@@ -1,7 +1,7 @@
 # Face Mask D&R
 ### Face mask Detection & Actors Recognition<br>
 <p align="center">
-  <img src="doc/XXXXX.gif">
+  <img src="doc/CV19.jpg">
 </p>
 
 ### Index
