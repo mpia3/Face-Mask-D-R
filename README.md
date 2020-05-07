@@ -1,4 +1,4 @@
-# Face Mask D&R
+# Face Mask D&R (CV-19)
 ### Face mask Detection & Actors Recognition<br>
 <p align="center">
   <img src="doc/CV19.jpg">
