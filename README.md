@@ -109,11 +109,10 @@ subtracts the color of the face mask and identifies the cut
  (useful for recognizing the subject) and the "artificial" mask section
 <br>
 <br>
-Cropped EyeLine for Masked actors recognition <br>
-![](doc/faces/MaskSubColor.png)<br>
 Face Mask image for color range <br>
 ![](doc/faces/EyeLine.jpg)
-
+Cropped EyeLine for Masked actors recognition <br>
+![](doc/faces/MaskSubColor.png)<br>
 
 #### 3) Face Recognition <br>
 ___
