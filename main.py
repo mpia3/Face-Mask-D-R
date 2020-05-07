@@ -1,0 +1,1 @@
+# Lanciare l'esecuzione iniziale
