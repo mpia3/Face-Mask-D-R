@@ -1,7 +1,7 @@
-# Face Mask D&R (CV-19)
+# Face Mask D&R
 ### Face mask Detection & Actors Recognition<br>
 <p align="center">
-  <img src="doc/CV19.jpg">
+  <img src="doc/XX.jpg">
 </p>
 INSERIRE GIF
 
@@ -109,9 +109,10 @@ subtracts the color of the face mask and identifies the cut
  (useful for recognizing the subject) and the "artificial" mask section
 <br>
 <br>
-Face Mask image for color range <br>
-![](doc/faces/EyeLine.jpg)
 Cropped EyeLine for Masked actors recognition <br>
+![](doc/faces/EyeLine.jpg)<br>
+
+Face Mask image for color range <br>
 ![](doc/faces/MaskSubColor.png)<br>
 
 #### 3) Face Recognition <br>
