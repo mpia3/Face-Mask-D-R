@@ -3,7 +3,6 @@
 <p align="center">
   <img src="doc/CV19.jpg">
 </p>
-INSERIRE GIF
 
 ### Index
 
@@ -95,6 +94,7 @@ CNN is trained on a dataset containing faces with and without a mask.
 The script is able to start via command line on images, videos and webcams
 <br>
 <br>
+INSERIRE GIF
 
 ![](doc/faces/GroupNoMask.png)
 ![](doc/faces/StreetMaskOK.png)
@@ -109,9 +109,9 @@ subtracts the color of the face mask and identifies the cut
  (useful for recognizing the subject) and the "artificial" mask section
 <br>
 <br>
-Cropped EyeLine for Masked actors recognition <br>
+INSERIRE IMMAGINI SOTTRAZIONE COLORE E EYE LINE
+
 ![](doc/faces/MaskSubColor.png)<br>
-Face Mask image for color range <br>
 ![](doc/faces/EyeLine.jpg)
 
 
@@ -145,6 +145,27 @@ ___
 ![](doc/faces/WMaskDetected/3MaskOK.png)
 <br>
 ___
+
+**Antony Hopkins**<br>
+![](doc/faces/Clean/49.jpg)
+![](doc/faces/CleanDetected/49OK.png)<br>
+![](doc/faces/WMask/1Mask.jpg)
+![](doc/faces/WMaskDetected/1MaskOK.png)
+<br>
+___
+**Ben Affleck**<br>
+![](doc/faces/Clean/14.jpg)
+![](doc/faces/CleanDetected/14OK.png)<br>
+![](doc/faces/WMask/18Mask.jpg)
+![](doc/faces/WMaskDetected/18MaskOK.png)
+<br>
+___
+**Beyonce**<br>
+![](doc/faces/Clean/67.jpg)
+![](doc/faces/CleanDetected/67OK.png)<br>
+![](doc/faces/WMask/21Mask.jpg)
+![](doc/faces/WMaskDetected/21MaskOK.png)
+<br>
 </li>
 
 
