@@ -16,6 +16,7 @@ DEFAULT_IMAGE_PATH = os.path.join(IMAGE_DIR, 'default-mask.png')
 BLACK_IMAGE_PATH = os.path.join(IMAGE_DIR, 'black-mask.png')
 BLUE_IMAGE_PATH = os.path.join(IMAGE_DIR, 'blue-mask.png')
 RED_IMAGE_PATH = os.path.join(IMAGE_DIR, 'red-mask.png')
+PATH_PREDICTOR = './wear_mask_to_face/model/shape_predictor_68_face_landmarks.dat'
 
 
 def rect_to_bbox(rect):
@@ -28,7 +29,7 @@ def rect_to_bbox(rect):
 
 
 def face_alignment(faces):
-    predictor = dlib.shape_predictor("./shape_predictor_68_face_landmarks.dat")
+    predictor = dlib.shape_predictor(PATH_PREDICTOR)
     faces_aligned = []
     for face in faces:
         rec = dlib.rectangle(0, 0, face.shape[0], face.shape[1])
