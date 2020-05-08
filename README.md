@@ -160,7 +160,7 @@ ___
 <br>
 
 #### VGG16 results on Actor masked faces (EyeLinesCrop) Recognition
-![](doc/results/Test_actors_recognition_from_eyes.jpeg)
+![](doc/results/Test_actors_recognition_from_eyes.png)
 <br>
 
 ![](doc/results/Train_Val_actors_recognition_from_eyes.jpeg)
