@@ -3,7 +3,8 @@
 <p align="center">
   <img src="doc/XX.jpg">
 </p>
-INSERIRE GIF
+
+![](doc/Architetture.jpg)
 
 ### Index
 
@@ -101,21 +102,7 @@ The script is able to start via command line on images, videos and webcams
 ![](doc/faces/MuseoOK.PNG)
 
 
-#### 2) Mask Cropper <br>
-___
-this script processes the images returned by WeraMask.py, 
-subtracts the color of the face mask and identifies the cut
- point that separates the image into two sections: eye line section
- (useful for recognizing the subject) and the "artificial" mask section
-<br>
-<br>
-Cropped EyeLine for Masked actors recognition <br>
-![](doc/faces/EyeLine.jpg)<br>
-
-Face Mask image for color range <br>
-![](doc/faces/MaskSubColor.png)<br>
-
-#### 3) Face Recognition <br>
+#### 2) Face Recognition <br>
 ___
 This project based on the pre-trained classifier VGG16 is able to 
 fine-tune the images of the dataset containing only the faces of 
@@ -145,6 +132,21 @@ ___
 ![](doc/faces/WMaskDetected/3MaskOK.png)
 <br>
 ___
+
+#### 4) Mask Cropper <br>
+___
+this script processes the images returned by WeraMask.py, 
+subtracts the color of the face mask and identifies the cut
+ point that separates the image into two sections: eye line section
+ (useful for recognizing the subject) and the "artificial" mask section
+<br>
+<br>
+Cropped EyeLine for Masked actors recognition <br>
+![](doc/faces/EyeLine.jpg)<br>
+
+Face Mask image for color range <br>
+![](doc/faces/MaskSubColor.png)<br>
+
 </li>
 
 
