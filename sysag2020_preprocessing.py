@@ -28,7 +28,12 @@ from PIL import Image
 from numpy import asarray
 from mtcnn.mtcnn import MTCNN
 import cv2
-
+"""
+Script di pre processing
+Utile per:
+-   Estrarre i volti da immagini complete 
+-   Estrarre la linea degli occhi (solo volti senza maschera)
+"""
 
 ActorsPath = '/gdrive/My Drive/SysAgTest'
 ActorsCroppedPath = '/gdrive/My Drive/SysAgDatasetFaceOnly/Test'
@@ -38,6 +43,12 @@ ActorsCroppedPath = '/gdrive/My Drive/SysAgDatasetFaceOnly/Test'
 
 # extract a single face from a given photograph
 def extract_face(filename, required_size=(224, 224)):
+    """
+    Estrattore del volto a dimensione 224x224
+    :param filename: immagine input
+    :param required_size:  dimensione target
+    :return: matrice di pixel (immagine)
+    """
     # load image from file
     pixels = pyplot.imread(filename)
     # create the detector, using default weights
@@ -57,17 +68,35 @@ def extract_face(filename, required_size=(224, 224)):
 
 
 def cropEyeLine(pixels, x, y):
+    """
+    Taglia linea degli occhi
+    :param pixels:
+    :param x:
+    :param y:
+    :return: cropped image
+    """
     crop = pixels[0:y][0:x]
     # cv2_imshow(crop)
     return crop
 
 
 def printImage(image):
+    """
+    Stampa a video immagine (matrice di pixel)
+    :param image:
+    :return:
+    """
     pyplot.imshow(image)
     pyplot.show()
 
 
 def cropFaceOnly(ActorsPath, ActorsCroppedPath):
+    """
+    Taglia il volto dall'immagine intera
+    :param ActorsPath: path di input
+    :param ActorsCroppedPath: path di output
+    :return: None
+    """
     listOfActors = os.listdir(ActorsPath)
     print("Actors: ", listOfActors)
 
@@ -91,6 +120,12 @@ def cropFaceOnly(ActorsPath, ActorsCroppedPath):
 
 
 def cropEyeLineByFace(ActorsPath, ActorsCroppedPath):
+    """
+    Taglio del volto basato sui punti facciali
+    :param ActorsPath: path di input
+    :param ActorsCroppedPath: path di output
+    :return: None
+    """
     listOfActors = os.listdir(ActorsPath)
     print("Actors: ", listOfActors)
 

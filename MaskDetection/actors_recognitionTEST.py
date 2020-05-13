@@ -23,8 +23,17 @@ from sklearn import metrics
 from sklearn.metrics import classification_report
 
 IMAGE_SIZE = (224, 224)
+"""
+La classe actor recognitionTEST serve per testare il modello appreso su un insieme di immagini classificate all'interno delle cartelle denominate con il nome ell'attore.
 
+"""
 def splitDataset(trainPath,valPath):
+  """
+  tale metodo ripartisce l'insieme in validatoin e train assegnado a il 30% dell'insieme al validation set e il resto al training
+  :param trainPath: percorso train
+  :param valPath: percorso validation
+  :return:
+  """
   listOfactorsTrain = os.listdir(trainPath)
   listOfactorsVal = os.listdir(valPath)
   print(" listOfactorsTrain :" ,listOfactorsTrain)
@@ -46,6 +55,16 @@ def splitDataset(trainPath,valPath):
 
 
 def __training():
+    """
+    tale metodo effettua il training del modello.
+    crea un modello vgg16 definendo lo shape delle immagini e la mappa dei colori.
+    Definisce un modello sequenziale con una rectified linear unit e una funzione di attivazione softmax
+    Definisce i folder di train e validation con i batchsize
+    Crea generatori di train e valid. in modo categorical cioè definendo un problema di classificazione categorica.
+    Infine stabilisce numero epoche, learning rate e compila il modello.
+    Come ultima cosa mostra a video l'accuratezza raggiunta nelle varie epoche.
+    :return:
+    """
     random.seed(3)
     # path = '/gdrive/My Drive/SysAgdatasetCropped/train' + '/' + 'Angelina Jolie' + '/' + '166.jpg'
     # im = pyplot.imread(path)
@@ -131,7 +150,13 @@ def __training():
     plt.show()
 
 def show_confusion_matrix(validations, predictions, labels):
-
+    """
+    La matrice di mostra a video la differenza tra predizione e effettiva classificazione dell'immagine.
+    :param validations: validazione (ground)
+    :param predictions: predizioni effettuate
+    :param labels: corrispondenze intero attore
+    :return:
+    """
     matrix = metrics.confusion_matrix(validations, predictions)
     plt.figure(figsize=(6, 4))
     sns.heatmap(matrix,
@@ -148,6 +173,14 @@ def show_confusion_matrix(validations, predictions, labels):
     plt.show()
 
 def __testing():
+    """
+    Tale metodo effettua il testing del modello appreso. A tal fine legge il folder contenente le immagini di test croppate ed effettua la
+    predizione per ognuna di esse.
+    Il risultato è una lista dove ad ogni cella corrisponde la classificaizone per l'immagine.
+    Infine si confronta la predizione con il ground truth e si calcola il n di errori
+    Viene mostrata a video la matrice di confusione.
+    :return:
+    """
     test_folder = "./Images4TestCropped/"
     #IMAGE_SIZE = 224
     random.seed(3)
@@ -176,7 +209,15 @@ def __testing():
     show_confusion_matrix(predicted_classes, ground_truth, labels)
     print(classification_report(predicted_classes, ground_truth))
 
+
 def actor_recognition(img, original_img):
+    """
+    Il metodo legge il modello, fa la resize dell'immagine e l'espansione dell'immagine, dopodichè fa la predizione della classe per quell'immagine
+    Infine mette all'apice in alto a destra il nome dell'attore predetto.
+    :param img: immagine da classificare
+    :param original_img: immagine originale su cui applicare il testo
+    :return:
+    """
     model = load_model('./models/vgg16_v1.hdf5')
     # image = cv2.imread('./Images4Test/')
     # imageRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
@@ -201,7 +242,10 @@ actors_dict = {0: 'Andrew Garfield',
                3: 'Ben Affleck',
                4: 'Beyonce Knowles'}
 
-
+"""
+Il main effettua il la crop delle immagini con mascherina e la resize e scrive tali eimmaginin nella cartella Images4TestCropped
+Dopodiche avvia il testing su tali immagini
+"""
 if __name__ == '__main__':
     '''
     for actor in range (0, 5):
@@ -218,4 +262,3 @@ if __name__ == '__main__':
     '''
     __testing()
     #actor_recognition(img_crop, img)
-

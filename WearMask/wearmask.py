@@ -7,8 +7,10 @@ import face_recognition
 import math
 import dlib
 from PIL import Image, ImageFile
-
-__version__ = '0.3.0'
+"""
+Script che permette l'aggiunta di una mascherina ad un immagine di un volto di cui ne è privo
+Utilizza la libreria dlib per individuare i punti facciali e strecciare la mascherina (.png) sul volto
+"""
 
 IMAGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
 # IMAGE_DIR = os.path.join(os.path.dirname(os.path.abspath(__file__)), 'images')
@@ -20,6 +22,11 @@ PATH_PREDICTOR = './wear_mask_to_face/model/shape_predictor_68_face_landmarks.da
 
 
 def rect_to_bbox(rect):
+    """
+    Converte il rettangolo in un box
+    :param rect: rettangolo in input
+    :return: coordinate dei 4 lati
+    """
     # print(rect)
     x = rect[3]
     y = rect[0]
@@ -29,6 +36,11 @@ def rect_to_bbox(rect):
 
 
 def face_alignment(faces):
+    """
+    Funzione che allinea il volto, ruotandolo ai fini del miglioramento delle prestazioni di riconoscimento
+    :param faces: lista di immagini di volti individuati
+    :return: lista di immagini di volti allineati all'osservatore
+    """
     predictor = dlib.shape_predictor(PATH_PREDICTOR)
     faces_aligned = []
     for face in faces:
@@ -50,6 +62,12 @@ def face_alignment(faces):
 
 
 def cli(pic_path='', save_pic_path=''):
+    """
+    Funzione madre a linea di comando utile all'esecuzione dell'intera operazione di applicazione della mascherina
+    :param pic_path: percorso in cui è collocato l'immagine in input
+    :param save_pic_path: percorso di output in cui viene salvata l'immagine
+    :return:
+    """
     parser = argparse.ArgumentParser(description='Wear a face mask in the given picture.')
     parser.add_argument('--model', default='hog', choices=['hog', 'cnn'], help='Which face detection model to use.')
     group = parser.add_mutually_exclusive_group()
@@ -76,9 +94,20 @@ def cli(pic_path='', save_pic_path=''):
 
 
 class FaceMasker:
+    """
+    Classe che difinisce l'operazione di Face Maskering
+    """
     KEY_FACIAL_FEATURES = ('nose_bridge', 'chin')
 
     def __init__(self, face_path, mask_path, show=False, model='hog', save_path=''):
+        """
+        Costruttore dell'oggetto FaceMasker
+        :param face_path: percorso dell'immagine del volto
+        :param mask_path: percorso dell'immagine della mascherina.png
+        :param show: Flag
+        :param model: metodo di ricerca (descrittore) utilizzabile anche CNN
+        :param save_path: locazione di salvataggio dell'output
+        """
         self.face_path = face_path
         self.mask_path = mask_path
         self.save_path = save_path
@@ -88,7 +117,6 @@ class FaceMasker:
         self._mask_img: ImageFile = None
 
     def mask(self):
-
         face_image_np = face_recognition.load_image_file(self.face_path)
         face_locations = face_recognition.face_locations(face_image_np, model=self.model)
         face_landmarks = face_recognition.face_landmarks(face_image_np, face_locations)
@@ -144,6 +172,11 @@ class FaceMasker:
             print('Found no face.' + self.save_path)
 
     def _mask_face(self, face_landmark: dict):
+        """
+        funzione madre per l'applicazione della mascherina
+        :param face_landmark: dizionario contenente le liste dei punti facciali individuati
+        :return: None
+        """
         nose_bridge = face_landmark['nose_bridge']
         nose_point = nose_bridge[len(nose_bridge) * 1 // 4]
         nose_v = np.array(nose_point)
@@ -196,6 +229,10 @@ class FaceMasker:
         self._face_img.paste(mask_img, (box_x, box_y), mask_img)
 
     def _save(self):
+        """
+        funzione utile per poter salvare l'immagine
+        :return: None
+        """
         path_splits = os.path.splitext(self.face_path)
         new_face_path = path_splits[0] + '-with-mask' + path_splits[1]
         self._face_img.save(new_face_path)
@@ -203,6 +240,13 @@ class FaceMasker:
 
     @staticmethod
     def get_distance_from_point_to_line(point, line_point1, line_point2):
+        """
+        funzione utile all'individuazione della distanza tra un punto e una linea
+        :param point:
+        :param line_point1:
+        :param line_point2:
+        :return: distanza in intero
+        """
         distance = np.abs((line_point2[1] - line_point1[1]) * point[0] +
                           (line_point1[0] - line_point2[0]) * point[1] +
                           (line_point2[0] - line_point1[0]) * line_point1[1] +
@@ -213,6 +257,9 @@ class FaceMasker:
 
 
 if __name__ == '__main__':
+    """
+    funzione main per il testing e l'applicazione della mascherina sul dataset di attori
+    """
     attore = 4
     ActorName = ['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles']
     dataset_path = './Actors/' + ActorName[attore]

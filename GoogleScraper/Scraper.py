@@ -1,5 +1,7 @@
 from google_images_download import google_images_download  # importing the library
-
+"""
+Script in grado di scaricare N (limit) immagini da google basandosi sulle keywords fornite
+"""
 response = google_images_download.googleimagesdownload()  # class instantiation
 
 #our keywords: Andrew Garfield 2019, Angelina Jolie 2019, Anthony Hopkins 2019, Ben Affleck 2019, Beyonce Knowles 2019
