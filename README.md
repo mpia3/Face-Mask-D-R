@@ -1,8 +1,5 @@
 # Face Mask D&R
 ### Face mask Detection & Actors Recognition<br>
-<p align="center">
-  <img src="doc/XX.jpg">
-</p>
 
 ![](doc/Architetture.jpg)
 
@@ -90,7 +87,7 @@ keras-vggface
 Project Presentation inside "/doc/Presentazione FMD&R.pptx" <br>
 ___
 #### 1) Mask Detection <br>
-___
+
 This project trains a CNN to detect the presence of a face mask in a face image.
 CNN is trained on a dataset containing faces with and without a mask.
 The script is able to start via command line on images, videos and webcams
@@ -101,18 +98,18 @@ The script is able to start via command line on images, videos and webcams
 ![](doc/faces/StreetMaskOK.png)
 ![](doc/faces/MuseoOK.PNG)
 
-
-#### 2) Face Recognition <br>
 ___
+#### 2) Face Recognition <br>
+
 This project based on the pre-trained classifier VGG16 is able to 
 fine-tune the images of the dataset containing only the faces of 
 the actors, and make a prediction on which of the 5 actors it can be.
 <br>
 <br>
 INSERIRE IMMAGINI
-
-#### 3) Masked Face Recognition <br>
 ___
+#### 3) Masked Face Recognition <br>
+
 This project based on the pre-trained classifier VGG16 is able to fine-tune 
 the images of the dataset containing only the eye line returned by 
 MaskCropper.py. He is therefore able to recognize the identity of the 
@@ -124,7 +121,7 @@ image provided between one of the 5 masked actors used.
 ![](doc/faces/WMask/2Mask.jpg)
 ![](doc/faces/WMaskDetected/2MaskOK.png)
 <br>
-___
+
 **Angelina Jolie**<br>
 ![](doc/faces/Clean/8.jpg)
 ![](doc/faces/CleanDetected/8OK.png)<br>
@@ -132,9 +129,8 @@ ___
 ![](doc/faces/WMaskDetected/3MaskOK.png)
 <br>
 ___
-
 #### 4) Mask Cropper <br>
-___
+
 this script processes the images returned by WeraMask.py, 
 subtracts the color of the face mask and identifies the cut
  point that separates the image into two sections: eye line section
