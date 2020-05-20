@@ -77,8 +77,10 @@ keras-vggface
 
 1 - Clone this repository <br> 
 2 - Install all dependencies with "pip3 install -r requirements.txt" <br> 
-3 - Execute "main.py" <br>
-4 - Enjoy with **Face Mask D&R** <br>
+3 - Download SysAgDatasets and SysAgModels from :
+https://drive.google.com/drive/folders/15BUd3s0lUbZjG_Ck8vrawa5sx94pSjAW?usp=sharing <br> 
+4 - Execute "main.py" <br>
+5 - Enjoy with **Face Mask D&R** <br>
 
 </li>
 <li>
@@ -174,8 +176,17 @@ Face Mask image for color range <br>
 
 </li>
 
-**X** <br>
-XXXX
+FMD&R is able to recognize one of the five actors in the dataset starting from an image 
+of a face without or equipped with a face mask using only the eye area. <br>
+A possible future development could involve the use of more accurate techniques 
+for the recognition of the exposed face area such as the distance between the eyes 
+and the nose etc. 
+<br>
+The MaskCropper script is based on the blue color range 
+(typical of the blue_masck.png used) which makes the crop on images with masks 
+of different color ineffective; to solve this problem, it would be possible to 
+identify the area of the image with greater concentration of color to more 
+precisely identify the "cut point" and obtain the eye area of the face.
 
 
 <li>
