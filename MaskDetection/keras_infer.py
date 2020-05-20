@@ -6,12 +6,12 @@ import argparse
 import numpy as np
 from PIL import Image
 from keras.models import model_from_json
-from utils.anchor_generator import generate_anchors
-from utils.anchor_decode import decode_bbox
-from utils.nms import single_class_non_max_suppression
-from load_model.keras_loader import load_keras_model, keras_inference
+from MaskDetection.utils.anchor_generator import generate_anchors
+from MaskDetection.utils.anchor_decode import decode_bbox
+from MaskDetection.utils.nms import single_class_non_max_suppression
+from MaskDetection.load_model.keras_loader import load_keras_model, keras_inference
 
-model = load_keras_model('models/face_mask_detection.json', 'models/face_mask_detection.hdf5')
+model = load_keras_model('MaskDetection\models/face_mask_detection.json', 'MaskDetection/models/face_mask_detection.hdf5')
 
 # anchor configuration
 feature_map_sizes = [[33, 33], [17, 17], [9, 9], [5, 5], [3, 3]]

@@ -84,13 +84,13 @@ def hsv2rgb(hsvColor):
     return rgb[0], rgb[1], rgb[2]
 
 
-def cropEyeLineFromMasked(image):
+def cropEyeLineFromMasked(frame):
     """
     Funzione principale che restituisce la linea degli occhi di un immagine di un volto avente la mascherina
     :param image: immagine come matrice di pixel
     :return: immagine croppata presentante solo la linea degli occhi
     """
-    frame = pyplot.imread(image)
+    # frame = pyplot.imread(image)
     hsv_frame = cv2.cvtColor(frame, cv2.COLOR_BGR2HSV)
 
     low_blue_hsv = '#147B7A'  # DA FARE IL TUNING

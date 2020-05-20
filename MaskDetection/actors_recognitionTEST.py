@@ -181,7 +181,7 @@ def __testing():
     Viene mostrata a video la matrice di confusione.
     :return:
     """
-    test_folder = "./Images4TestCropped/"
+    test_folder = "H:\SysAg\SysAg\ActorsWMFinal"
     #IMAGE_SIZE = 224
     random.seed(3)
     test_batchsize = 1
@@ -206,34 +206,61 @@ def __testing():
     errors = np.where(predicted_classes != ground_truth)[0]
     print("No of errors = {}/{}".format(len(errors), test_generator.samples))
     labels = ['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles']
-    show_confusion_matrix(predicted_classes, ground_truth, labels)
-    print(classification_report(predicted_classes, ground_truth))
+    show_confusion_matrix(ground_truth, predicted_classes, labels)
+    print(classification_report(ground_truth, predicted_classes))
 
 
-def actor_recognition(img, original_img):
+def createTestTree():
+    testPath = "H:/SysAg/SysAg/ActorsSingleTest/"
+    for x in range(6):
+        try:
+            os.makedirs(testPath + "/" + str(x), exist_ok=True)
+            print("Directory '%s' created successfully" % directory)
+        except OSError as error:
+            print("Directory '%s' can not be created")
+
+def Single_test(original_img, imageTest):
     """
-    Il metodo legge il modello, fa la resize dell'immagine e l'espansione dell'immagine, dopodichè fa la predizione della classe per quell'immagine
-    Infine mette all'apice in alto a destra il nome dell'attore predetto.
-    :param img: immagine da classificare
-    :param original_img: immagine originale su cui applicare il testo
+    Tale metodo effettua il testing del modello appreso. A tal fine legge il folder contenente l'immagine di test croppata ed effettua la
+    predizione per ognuna di esse.
+    Il risultato è la predizione dell'immagine in input
     :return:
     """
-    model = load_model('./models/vgg16_v1.hdf5')
-    # image = cv2.imread('./Images4Test/')
-    # imageRGB = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
-    image_resized = cv2.resize(img, IMAGE_SIZE)
-    # image_np = image_resized / 255.0  # Normalized to 0 ~ 1
-    image_exp = np.expand_dims(image_resized, axis=0)
-    # image = cv2.cvtColor(image, cv2.COLOR_BGR2RGB)
 
-    # result = vgg16.predict_classes(image_exp)
-    result = model.predict(image_exp)
-    print(result)
-    key = np.argmax(result, axis=1)
-    actor = actors_dict.get(key[0])
-    cv2.putText(original_img, actor, (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
+    # Insert Test image in Test-Tree
+    testPath =  "H:/SysAg/SysAg/ActorsSingleTest/0/"
+    imageName = "Test.jpg"
+    cv2.imwrite(testPath+imageName, imageTest)
+
+    # Make Prediction on Single Image
+    test_folder = "H:\SysAg\SysAg\ActorsSingleTest"
+    random.seed(3)
+    test_batchsize = 1
+    model = load_model('H:\SysAg\SysAg\MaskDetection/models/vgg16_v1.hdf5')
+    test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
+    test_generator = test_datagen.flow_from_directory(
+        test_folder,
+        target_size=(224, 224),
+        batch_size=test_batchsize,
+        class_mode='categorical',
+        shuffle=False)
+    ground_truth = test_generator.classes
+    label2index = test_generator.class_indices
+    idx2label = dict((v, k) for k, v in label2index.items())
+    predictions = model.predict_generator(test_generator,
+                                          steps=test_generator.samples / test_generator.batch_size, verbose=1)
+    predicted_classes = np.argmax(predictions, axis=1)
+
+    # Print Prediction
+    labels = ['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck', 'Beyonce Knowles']
+    print("I think it is: ", labels[predicted_classes[0]])
+
+    # Insert name of Actor on image
+    cv2.putText(original_img, labels[predicted_classes[0]], (20, 20), cv2.FONT_HERSHEY_SIMPLEX, 0.5, (0, 0, 255), 2)
     Image.fromarray(original_img).show()
-    # print(result)
+
+    # Clean Test-Tree
+    os.remove(testPath+imageName)
 
 
 actors_dict = {0: 'Andrew Garfield',
@@ -261,4 +288,6 @@ if __name__ == '__main__':
             cv2.imwrite('./Images4TestCropped/' +actors_dict.get(actor)+ '/'+ str(index) + '.jpg', cv2.cvtColor(img_crop, cv2.COLOR_RGB2BGR))
     '''
     __testing()
-    #actor_recognition(img_crop, img)
+    # actor_recognition(img_crop, img)
+
+    # Single_test(original_img, imageTest)
