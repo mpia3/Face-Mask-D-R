@@ -228,15 +228,23 @@ def Single_test(original_img, imageTest):
     """
 
     # Insert Test image in Test-Tree
-    testPath =  "H:/SysAg/SysAg/ActorsSingleTest/0/"
+    testPath = "H:/SysAg/SysAg/ActorsSingleTest/0/"
     imageName = "Test.jpg"
-    cv2.imwrite(testPath+imageName, imageTest)
+
+    model = ""
+
+    if imageTest == "X":
+        cv2.imwrite(testPath + imageName, original_img)
+        model = "actor_recognition.hdf5"
+    else:
+        cv2.imwrite(testPath + imageName, imageTest)
+        model = "vgg16_v1.hdf5"
 
     # Make Prediction on Single Image
     test_folder = "H:\SysAg\SysAg\ActorsSingleTest"
     random.seed(3)
     test_batchsize = 1
-    model = load_model('H:\SysAg\SysAg\MaskDetection/models/vgg16_v1.hdf5')
+    model = load_model('H:\SysAg\SysAg\MaskDetection/models/' + model)
     test_datagen = ImageDataGenerator(preprocessing_function=preprocess_input)
     test_generator = test_datagen.flow_from_directory(
         test_folder,
