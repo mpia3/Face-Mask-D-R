@@ -10,7 +10,7 @@
 3. [**Quick Start**](#quick-start)
 4. [**How it Works**](#how-it-works)
 5. [**Evaluation and Results**](#evaluation-and-results)
-6. [**Conclusions**](#conclusions)
+6. [**Conclusions and future develop**](#conclusions-and-future-develop)
 7. [**Credits**](#credits)
 
 <ul>
@@ -108,7 +108,6 @@ fine-tune the images of the dataset containing only the faces of
 the actors, and make a prediction on which of the 5 actors it can be.
 <br>
 <br>
-INSERIRE IMMAGINI
 ___
 #### 3) Masked Face Recognition <br>
 
