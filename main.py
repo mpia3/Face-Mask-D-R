@@ -16,11 +16,20 @@ from MaskDetection.keras_infer import run_on_video
 from PIL import Image
 import cv2
 
-mode = 0
-video_path = ''
+MODE = 0
+# 0 image of Actors (Full FMD&R Architetture)
+# 1 webcam Mask Detection
+# 2 video Mask Detection
+
+VIDEO_PATH = 'D:\SysAg\Datasets\FunnyCovid.mp4'
+# Only for mode 2
+
+WMaskActors = 'D:\SysAg\Datasets\ActorsWMask'
+ActorsFaceOnly = 'D:\SysAg\Datasets\SysAgDatasetFaceOnly\Test'
+# Only for mode 0
 
 if __name__ == "__main__":
-    if mode == 0:
+    if MODE == 0:
         actors = ['Andrew Garfield', 'Angelina Jolie', 'Anthony Hopkins', 'Ben Affleck',
                   'Beyonce Knowles']
 
@@ -28,8 +37,8 @@ if __name__ == "__main__":
                   'Beyonce Knowles-Mask']
 
         imageName = '3.jpg'
-        original_img_path = 'H:\OLDSysAg\Datasets\ActorsWMask' + '/' + actorsWMak[1] + '/' + imageName
-        original_img_path = 'H:\OLDSysAg\Datasets\SysAgDatasetFaceOnly\Test' + '/' + actors[1] + '/' + imageName
+        original_img_path = WMaskActors + '/' + actorsWMak[1] + '/' + imageName
+        original_img_path = ActorsFaceOnly + '/' + actors[1] + '/' + imageName
 
         original_img = cv2.imread(original_img_path)
         original_img = cv2.cvtColor(original_img, cv2.COLOR_BGR2RGB)
@@ -47,7 +56,9 @@ if __name__ == "__main__":
         else:   # Maschera non identificata
             print("Attore senza maschera")
             Single_test(original_img, "X")
-    elif mode == 1:
+    elif MODE == 1:
         run_on_video(0, '', conf_thresh=0.5)
+    elif MODE == 2:
+        run_on_video(VIDEO_PATH, '', conf_thresh=0.5)
     else:
-        run_on_video(video_path, '', conf_thresh=0.5)
+        print("BAD MODE SELECTED")
