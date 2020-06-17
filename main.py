@@ -16,7 +16,7 @@ from MaskDetection.keras_infer import run_on_video
 from PIL import Image
 import cv2
 
-MODE = 2
+MODE = 0
 # 0 image of Actors (Full FMD&R Architetture)
 # 1 webcam Mask Detection
 # 2 video Mask Detection
@@ -25,7 +25,7 @@ MODE = 2
 VIDEO_PATH = 'D:\SysAg\Datasets\Hilarious.mp4'
 # Only for mode 2
 
-WMaskActors = 'D:\SysAg\Datasets\ActorsWMask'
+WMaskActors = 'D:\SysAg\Datasets\SysAgWmask'
 ActorsFaceOnly = 'D:\SysAg\Datasets\SysAgDatasetFaceOnly\Test'
 # Only for mode 0
 
