@@ -16,12 +16,13 @@ from MaskDetection.keras_infer import run_on_video
 from PIL import Image
 import cv2
 
-MODE = 0
+MODE = 2
 # 0 image of Actors (Full FMD&R Architetture)
 # 1 webcam Mask Detection
 # 2 video Mask Detection
 
-VIDEO_PATH = 'D:\SysAg\Datasets\FunnyCovid.mp4'
+# https://www.youtube.com/watch?v=Pg1tDOatgPc
+VIDEO_PATH = 'D:\SysAg\Datasets\Hilarious.mp4'
 # Only for mode 2
 
 WMaskActors = 'D:\SysAg\Datasets\ActorsWMask'
